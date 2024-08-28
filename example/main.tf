@@ -6,11 +6,11 @@ resource "azurerm_resource_group" "this" {
 }
 
 module "this" {
-  source  = "../"
+  source = "../"
 
-  name                = "plum-subscription"
-  namespace_name      = "plum-servicebus-sandbox"
-  topic_name          = "plum-to-cft"
+  name           = "plum-subscription"
+  namespace_name = "plum-servicebus-sandbox"
+  topic_name     = "plum-to-cft"
 
   resource_group_name = azurerm_resource_group.this.name
 }
