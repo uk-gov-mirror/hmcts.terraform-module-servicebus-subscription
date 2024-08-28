@@ -11,7 +11,7 @@ The following example shows how to use the module to create an Azure Service Bus
 
 ```terraform
 module "servicebus-subscription" {
-  source                = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
+  source                = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=4.x"
   name                  = "your-subscription"
   namespace_name        = module.servicebus-namespace.name
   topic_name            = module.servicebus-topic.name
@@ -40,7 +40,7 @@ locals {
   }
 }
 module "servicebus-subscription" {
-  source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
+  source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=4.x"
   name                = "hmc-to-civil-subscription"
   namespace_name      = "hmc-servicebus"
   topic_name          = "hmc-to-cft"
@@ -55,7 +55,7 @@ The following example shows how to give read access to a user assigned managed i
 
 ```terraform
 module "servicebus-subscription" {
-  source                     = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
+  source                     = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=4.x"
   name                       = "your-subscription"
   namespace_name             = module.servicebus-namespace.name
   topic_name                 = module.servicebus-topic.name
