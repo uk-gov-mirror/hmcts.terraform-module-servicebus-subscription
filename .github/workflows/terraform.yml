@@ -5,9 +5,6 @@ on:
     branches:
       - master
 
-env:
-  TF_VERSION: 1.6.3
-
 jobs:
   terraform:
     name: 'terraform'
