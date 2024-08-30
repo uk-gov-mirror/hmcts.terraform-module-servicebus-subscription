@@ -3,19 +3,14 @@ variable "name" {
   description = "Azure Service Bus subscription name"
 }
 
-variable "namespace_name" {
+variable "namespace_id" {
   type        = string
-  description = "Azure Service Bus namespace"
+  description = "Azure Service Bus namespace id"
 }
 
 variable "topic_name" {
   type        = string
   description = "Azure Service Bus topic name"
-}
-
-variable "resource_group_name" {
-  type        = string
-  description = "Resource group in which the Service Bus subscription should exist"
 }
 
 variable "max_delivery_count" {

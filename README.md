@@ -11,11 +11,10 @@ The following example shows how to use the module to create an Azure Service Bus
 
 ```terraform
 module "servicebus-subscription" {
-  source                = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
+  source                = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=4.x"
   name                  = "your-subscription"
-  namespace_name        = module.servicebus-namespace.name
+  namespace_id          = module.servicebus-namespace.id
   topic_name            = module.servicebus-topic.name
-  resource_group_name   = azurerm_resource_group.rg.name
 }
 ```
 
@@ -40,11 +39,10 @@ locals {
   }
 }
 module "servicebus-subscription" {
-  source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
-  name                = "hmc-to-civil-subscription"
-  namespace_name      = "hmc-servicebus"
-  topic_name          = "hmc-to-cft"
-  resource_group_name = "hmc-shared"
+  source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=4.x"
+  name                = "your-subscription"
+  namespace_id        = module.servicebus-namespace.id
+  topic_name          = module.servicebus-topic.name
   sql_filters         = local.sql_filters
   correlation_filters = local.correlation_filters
 }
@@ -55,11 +53,10 @@ The following example shows how to give read access to a user assigned managed i
 
 ```terraform
 module "servicebus-subscription" {
-  source                     = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
+  source                     = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=4.x"
   name                       = "your-subscription"
-  namespace_name             = module.servicebus-namespace.name
+  namespace_id               = module.servicebus-namespace.id
   topic_name                 = module.servicebus-topic.name
-  resource_group_name        = azurerm_resource_group.rg.name
 
   # this variable is required
   managed_identity_object_id = "your-mi-object-id"
@@ -101,9 +98,8 @@ module "servicebus-subscription" {
 | <a name="input_managed_identity_object_id"></a> [managed\_identity\_object\_id](#input\_managed\_identity\_object\_id) | the object id of the managed identity - can be retrieved with az identity show --name <identity-name>-sandbox-mi -g managed-identities-<env>-rg --subscription DCD-CFTAPPS-<env> --query principalId -o tsv | `any` | `null` | no |
 | <a name="input_max_delivery_count"></a> [max\_delivery\_count](#input\_max\_delivery\_count) | Maximum number of attempts to deliver a message before it's sent to dead letter queue | `number` | `10` | no |
 | <a name="input_name"></a> [name](#input\_name) | Azure Service Bus subscription name | `string` | n/a | yes |
-| <a name="input_namespace_name"></a> [namespace\_name](#input\_namespace\_name) | Azure Service Bus namespace | `string` | n/a | yes |
+| <a name="input_namespace_id"></a> [namespace\_id](#input\_namespace\_id) | Azure Service Bus namespace id | `string` | n/a | yes |
 | <a name="input_requires_session"></a> [requires\_session](#input\_requires\_session) | A value that indicates whether the queue supports the concept of sessions | `bool` | `false` | no |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource group in which the Service Bus subscription should exist | `string` | n/a | yes |
 | <a name="input_sql_filters"></a> [sql\_filters](#input\_sql\_filters) | A map of sql filters | <pre>map(object({<br>    sql_filter = optional(string)<br>  }))</pre> | `{}` | no |
 | <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | Azure Service Bus topic name | `string` | n/a | yes |
 
