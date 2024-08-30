@@ -98,7 +98,7 @@ module "servicebus-subscription" {
 | <a name="input_managed_identity_object_id"></a> [managed\_identity\_object\_id](#input\_managed\_identity\_object\_id) | the object id of the managed identity - can be retrieved with az identity show --name <identity-name>-sandbox-mi -g managed-identities-<env>-rg --subscription DCD-CFTAPPS-<env> --query principalId -o tsv | `any` | `null` | no |
 | <a name="input_max_delivery_count"></a> [max\_delivery\_count](#input\_max\_delivery\_count) | Maximum number of attempts to deliver a message before it's sent to dead letter queue | `number` | `10` | no |
 | <a name="input_name"></a> [name](#input\_name) | Azure Service Bus subscription name | `string` | n/a | yes |
-| <a name="input_namespace_id"></a> [namespace\_id](#input\_namespace\_id) | Azure Service Bus namespace | `string` | n/a | yes |
+| <a name="input_namespace_id"></a> [namespace\_id](#input\_namespace\_id) | Azure Service Bus namespace id | `string` | n/a | yes |
 | <a name="input_requires_session"></a> [requires\_session](#input\_requires\_session) | A value that indicates whether the queue supports the concept of sessions | `bool` | `false` | no |
 | <a name="input_sql_filters"></a> [sql\_filters](#input\_sql\_filters) | A map of sql filters | <pre>map(object({<br>    sql_filter = optional(string)<br>  }))</pre> | `{}` | no |
 | <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | Azure Service Bus topic name | `string` | n/a | yes |
