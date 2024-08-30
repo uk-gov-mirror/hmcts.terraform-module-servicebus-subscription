@@ -5,7 +5,7 @@ variable "name" {
 
 variable "namespace_id" {
   type        = string
-  description = "Azure Service Bus namespace"
+  description = "Azure Service Bus namespace id"
 }
 
 variable "topic_name" {
