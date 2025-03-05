@@ -1,11 +1,13 @@
 data "azurerm_servicebus_topic" "this" {
+  count               = var.topic.name == null ? 0:1
   name                = var.topic_name
-  namespace_id        = var.namespace_id
+  resource_group_name = var.resource_group_name
+  namespace_name      = var.namespace_name
 }
 
 resource "azurerm_servicebus_subscription" "servicebus_subscription" {
   name     = var.name
-  topic_id = data.azurerm_servicebus_topic.this.id
+  topic_id = var.topic_id == null ? data.azurerm_servicebus_topic.this.id : var.topic_id
 
   lock_duration                     = var.lock_duration
   max_delivery_count                = var.max_delivery_count
@@ -14,7 +16,7 @@ resource "azurerm_servicebus_subscription" "servicebus_subscription" {
 
   requires_session                     = var.requires_session
   dead_lettering_on_message_expiration = true
-  batched_operations_enabled           = false
+  enable_batched_operations            = false
   default_message_ttl                  = "P10675199DT2H48M5.4775807S"
   auto_delete_on_idle                  = "P10675199DT2H48M5.4775807S"
 }
