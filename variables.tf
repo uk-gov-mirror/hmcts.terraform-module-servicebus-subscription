@@ -8,9 +8,21 @@ variable "namespace_id" {
   description = "Azure Service Bus namespace id"
 }
 
+variable "namespace_name" {
+  type        = string
+  description = "Azure Service Bus namespace name"
+}
+
 variable "topic_name" {
   type        = string
   description = "Azure Service Bus topic name"
+  default     = null
+}
+
+variable "topic_id" {
+  type        = string
+  description = "Azure Service Bus topic ID"
+  default     = null
 }
 
 variable "max_delivery_count" {
