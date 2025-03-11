@@ -6,7 +6,7 @@ data "azurerm_servicebus_topic" "this" {
 
 resource "azurerm_servicebus_subscription" "servicebus_subscription" {
   name     = var.name
-  topic_id = var.topic_id == null ? data.azurerm_servicebus_topic.this.id : var.topic_id
+  topic_id = var.topic_id == null ? data.azurerm_servicebus_topic.this[0].id : var.topic_id
 
   lock_duration                     = var.lock_duration
   max_delivery_count                = var.max_delivery_count
