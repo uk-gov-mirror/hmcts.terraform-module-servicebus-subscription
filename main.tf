@@ -1,7 +1,7 @@
 data "azurerm_servicebus_topic" "this" {
-  count          = var.topic_name == null ? 0 : 1
-  name           = var.topic_name
-  namespace_name = var.namespace_name
+  count        = var.topic_name == null ? 0 : 1
+  name         = var.topic_name
+  namespace_id = var.namespace_id
 }
 
 resource "azurerm_servicebus_subscription" "servicebus_subscription" {

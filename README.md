@@ -75,7 +75,7 @@ module "servicebus-subscription" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.79.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.0.0 |
 
 ## Resources
 
@@ -91,7 +91,7 @@ module "servicebus-subscription" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_correlation_filters"></a> [correlation\_filters](#input\_correlation\_filters) | A map of correlation filters to create rules for which messages will be forwarded from the topic to the subscription. If left undefined or empty all messages will be forwarded. Defaults to {}. | <pre>map(object({<br>    content_type        = optional(string)<br>    correlation_id      = optional(string)<br>    label               = optional(string)<br>    message_id          = optional(string)<br>    reply_to            = optional(string)<br>    reply_to_session_id = optional(string)<br>    session_id          = optional(string)<br>    to                  = optional(string)<br>    properties          = optional(map(string))<br>  }))</pre> | `{}` | no |
+| <a name="input_correlation_filters"></a> [correlation\_filters](#input\_correlation\_filters) | A map of correlation filters to create rules for which messages will be forwarded from the topic to the subscription. If left undefined or empty all messages will be forwarded. Defaults to {}. | <pre>map(object({<br/>    content_type        = optional(string)<br/>    correlation_id      = optional(string)<br/>    label               = optional(string)<br/>    message_id          = optional(string)<br/>    reply_to            = optional(string)<br/>    reply_to_session_id = optional(string)<br/>    session_id          = optional(string)<br/>    to                  = optional(string)<br/>    properties          = optional(map(string))<br/>  }))</pre> | `{}` | no |
 | <a name="input_forward_dead_lettered_messages_to"></a> [forward\_dead\_lettered\_messages\_to](#input\_forward\_dead\_lettered\_messages\_to) | Topic or Queue to forwards dead lettered messages to | `string` | `""` | no |
 | <a name="input_forward_to"></a> [forward\_to](#input\_forward\_to) | Topic or Queue to forwards received messages to | `string` | `""` | no |
 | <a name="input_lock_duration"></a> [lock\_duration](#input\_lock\_duration) | Message lock duration (ISO-8601) | `string` | `"PT1M"` | no |
@@ -100,8 +100,9 @@ module "servicebus-subscription" {
 | <a name="input_name"></a> [name](#input\_name) | Azure Service Bus subscription name | `string` | n/a | yes |
 | <a name="input_namespace_id"></a> [namespace\_id](#input\_namespace\_id) | Azure Service Bus namespace id | `string` | n/a | yes |
 | <a name="input_requires_session"></a> [requires\_session](#input\_requires\_session) | A value that indicates whether the queue supports the concept of sessions | `bool` | `false` | no |
-| <a name="input_sql_filters"></a> [sql\_filters](#input\_sql\_filters) | A map of sql filters | <pre>map(object({<br>    sql_filter = optional(string)<br>  }))</pre> | `{}` | no |
-| <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | Azure Service Bus topic name | `string` | n/a | yes |
+| <a name="input_sql_filters"></a> [sql\_filters](#input\_sql\_filters) | A map of sql filters | <pre>map(object({<br/>    sql_filter = optional(string)<br/>  }))</pre> | `{}` | no |
+| <a name="input_topic_id"></a> [topic\_id](#input\_topic\_id) | Azure Service Bus topic ID | `string` | `null` | no |
+| <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | Azure Service Bus topic name | `string` | `null` | no |
 
 ## Outputs
 
