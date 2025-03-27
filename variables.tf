@@ -87,3 +87,14 @@ variable "correlation_filters" {
     error_message = "At least one of \"content_type\", \"correlation_id\", \"label\", \"message_id\", \"reply_to\", \"reply_to_session_id\", \"session_id\", \"to\" or \"properties\" must be set on every correlation_filter block."
   }
 }
+
+variable "status" {
+  type        = string
+  description = "The status of the Service Bus Subscription"
+  default     = "Active"
+  validation {
+    condition     = can(regex("Active|Disabled|ReceiveDisabled", var.status))
+    error_message = "status must be either Active, Disabled or ReceiveDisabled"
+  }
+
+}
