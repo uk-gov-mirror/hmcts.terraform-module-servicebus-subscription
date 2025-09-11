@@ -15,7 +15,7 @@ resource "azurerm_servicebus_subscription" "servicebus_subscription" {
 
   requires_session                     = var.requires_session
   dead_lettering_on_message_expiration = true
-  enable_batched_operations            = false
+  batched_operations_enabled           = false
   default_message_ttl                  = "P10675199DT2H48M5.4775807S"
   auto_delete_on_idle                  = "P10675199DT2H48M5.4775807S"
 }
